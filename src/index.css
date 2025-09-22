@@ -1,0 +1,5 @@
+/* global reset */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: Arial, Helvetica, sans-serif; background:#f6f8fa; color:#111; }
+a { color: #0b69ff; text-decoration: none; }
+button { font: inherit; }
