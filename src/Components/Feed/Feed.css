@@ -24,6 +24,55 @@
   font-weight: 700;
 }
 
+/* ===== USER ACTIONS (USERNAME, NEW POST, LOGOUT) ===== */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* spacing between all items */
+}
+
+.user-name {
+  font-weight: 500;
+  color: #374151;
+}
+
+.btn-newpost {
+  text-decoration: none;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+}
+
+.btn-newpost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+}
+
+.btn-logout {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff4d4f, #e03131);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(224,49,49,0.3);
+}
+
+.btn-logout:hover {
+  background: linear-gradient(135deg, #e03131, #c92a2a);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(224,49,49,0.4);
+}
+
+/* Ask Question button */
 .ask-question-btn {
   background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
@@ -172,7 +221,7 @@
   margin-bottom: 20px;
 }
 
-/* ===== POST TEXT - CLEAR READABLE TEXT ===== */
+/* ===== POST TEXT ===== */
 .post-text {
   margin-bottom: 15px;
 }
@@ -186,7 +235,7 @@
   background: transparent;
 }
 
-/* ===== POST CODE - CLEAN STYLING ===== */
+/* ===== POST CODE ===== */
 .post-code {
   margin-bottom: 20px;
 }
