@@ -1,0 +1,227 @@
+/* ===== CommentsSection.css (Option A: Inline text actions) ===== */
+
+/* Container */
+.comments-section {
+  background: transparent;
+  padding: 8px 6px;
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  color: #222;
+}
+
+/* Heading */
+.comments-section h3 {
+  margin: 6px 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Compact comment row (like IG) */
+.comment-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 6px;
+  border-bottom: 1px solid #eee;
+  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Avatar (optional) */
+.comment-item .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #ddd;
+}
+
+/* Content area */
+.comment-item .content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Author + inline text */
+.comment-item .author {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #0f1720;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.comment-item .text {
+  display: inline;
+  font-size: 0.95rem;
+  color: #111;
+  line-height: 1.25;
+  white-space: pre-wrap;
+}
+
+/* Attachments */
+.comment-item .attachments {
+  margin-top: 6px;
+}
+.comment-item .attachments a {
+  color: #0f62ff;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+.comment-item .attachments a:hover { text-decoration: underline; }
+
+/* Meta row */
+.comment-item .meta {
+  margin-top: 6px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+/* Inline compact action buttons: look like links */
+.comment-item .meta button {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Ensure the count spacing is tight */
+.comment-item .meta button .count {
+  margin-left: 2px;
+  font-weight: 500;
+  color: inherit;
+}
+
+/* Hover affordance */
+.comment-item .meta button:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+/* Disabled */
+.comment-item .meta button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* Small alignment for icons */
+.comment-item .meta button img,
+.comment-item .meta button svg,
+.comment-item .meta button span {
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Replies container */
+.comment-item .replies {
+  margin-top: 8px;
+  margin-left: 44px; /* make replies indented but subtle */
+}
+
+/* Reply row modifier */
+.comment-item.reply { padding-left: 0; }
+
+/* Compact comment form */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px 0;
+}
+.comment-form textarea {
+  border: 0;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 6px 4px;
+  font-size: 0.95rem;
+  background: transparent;
+  resize: vertical;
+  min-height: 44px;
+}
+.comment-form textarea:focus {
+  outline: none;
+  border-bottom-color: #c7ddff;
+  box-shadow: 0 2px 6px rgba(0,119,255,0.06);
+}
+
+/* File chips */
+.file-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.file-chip {
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.04);
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.file-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+/* Form row buttons */
+.comment-form-row { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+.attach-label { cursor: pointer; font-size: 18px; }
+.btn-post {
+  background: none;
+  border: none;
+  color: #0f62ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-cancel { background: none; border: none; color: #6b7280; margin-right: 8px; }
+
+/* View replies toggle */
+.view-replies-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.88rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+.view-replies-btn:hover { color: #374151; text-decoration: underline; }
+
+/* Small heart on right */
+.comment-item .right-actions {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+}
+.comment-item .heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.comment-item .heart-btn.liked { color: #ef4444; }
+
+/* Loading state */
+.comments-section-loading { color: #666; padding: 12px 8px; text-align: center; }
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .comment-item .avatar { width: 36px; height: 36px; }
+  .replies { margin-left: 40px; }
+}
