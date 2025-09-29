@@ -1,0 +1,87 @@
+/* Container for the whole page */
+.myposts-page {
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Page heading */
+.myposts-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Individual post card */
+.mypost-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.mypost-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Title of the post */
+.mypost-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+/* Meta info: author & date */
+.mypost-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+/* Post content text */
+.mypost-body {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  white-space: pre-line;
+}
+
+/* Edit button styling */
+.mypost-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mypost-actions .btn-edit {
+  padding: 6px 12px;
+  background: #4cafef;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.mypost-actions .btn-edit:hover {
+  background: #3895d3;
+}
+
+/* If you show any tags inside MyPosts */
+.mypost-tags {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mypost-tag {
+  background: #f3f3f3;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #333;
+}
