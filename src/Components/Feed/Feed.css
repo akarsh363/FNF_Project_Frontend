@@ -279,3 +279,60 @@
   border: 1px solid #e5e7eb;
   background: transparent;
 }
+
+/* ========== Feed controls (search + dept) ========== */
+.feed-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+  min-height: 44px;
+}
+
+.feed-controls-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 0 0 auto;
+}
+
+.feed-controls-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+/* search input */
+.feed-search-input {
+  width: 320px;
+  max-width: 60%;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  padding: 9px 11px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+/* department select */
+.feed-dept-select {
+  width: 180px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  padding: 9px 11px;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
+}
+
+/* responsive tweaks */
+@media (max-width: 880px) {
+  .feed-search-input { width: 180px; max-width: 55%; }
+  .feed-dept-select { width: 140px; }
+}
