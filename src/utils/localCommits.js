@@ -42,12 +42,6 @@ export function removeLocalCommitByPostId(postId) {
   } catch {}
 }
 
-/**
- * Merge serverPosts (array of UI-normalized posts) with local commits targeting the current user's posts.
- * Strategy: create pseudo-post entries for commits whose postId is in the user's posts (or optionally match by authorName).
- * - serverPosts: normalized UI posts (should contain postId)
- * - currentUserId (optional): if provided, you can match commits for that user's authored posts differently.
- */
 export function mergeMyPostsWithCommits(
   serverPosts = [],
   currentUserId = null

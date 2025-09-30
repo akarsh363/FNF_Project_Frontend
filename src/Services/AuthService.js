@@ -1,4 +1,4 @@
-
+// src/Services/AuthService.js
 import api from "./api";
 const TOKEN_KEY = "token";
 
@@ -51,13 +51,16 @@ export async function register({
   )
     form.append("DepartmentId", String(departmentId));
   if (profileFile) form.append("ProfilePicture", profileFile, profileFile.name);
+
+  // Call the API to register. DO NOT automatically persist token here.
+  // Return whatever the API returns so caller can decide next steps.
   const body = await api.request("/api/Auth/register", {
     method: "POST",
     body: form,
   });
+
+  // backend may return token or other object - return it, but do NOT call saveToken here.
   const token = body?.Token || body?.token || body;
-  if (!token) throw new Error("No token returned from server");
-  saveToken(token);
   return token;
 }
 

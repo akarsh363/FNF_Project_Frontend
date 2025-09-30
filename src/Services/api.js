@@ -24,6 +24,60 @@ function _readToken() {
   }
 }
 
+/**
+ * Small localStorage cache helpers
+ * - stores { ts: <ms>, ttl: <sec>, data: <any> }
+ */
+function _cacheKey(key) {
+  return `__api_cache__:${key}`;
+}
+export function getCached(key) {
+  try {
+    const raw = localStorage.getItem(_cacheKey(key));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") return null;
+    const now = Date.now();
+    if (parsed.ttl && parsed.ts && now - parsed.ts > parsed.ttl * 1000) {
+      localStorage.removeItem(_cacheKey(key));
+      return null;
+    }
+    return parsed.data;
+  } catch {
+    return null;
+  }
+}
+export function setCached(key, data, ttlSeconds = 60) {
+  try {
+    localStorage.setItem(
+      _cacheKey(key),
+      JSON.stringify({ ts: Date.now(), ttl: Number(ttlSeconds || 60), data })
+    );
+  } catch {}
+}
+export function clearCache(key) {
+  try {
+    localStorage.removeItem(_cacheKey(key));
+  } catch {}
+}
+
+/**
+ * requestWithCache(path, options, { ttl = 60, cacheKey })
+ * - If cacheKey present and cached entry fresh, returns cached data
+ * - Otherwise performs request() and caches result (if ok)
+ */
+export async function requestWithCache(path, options = {}, opts = {}) {
+  const ttl = Number(opts.ttl ?? 60);
+  const cacheKey = opts.cacheKey ?? path;
+  if (cacheKey) {
+    const cached = getCached(cacheKey);
+    if (cached != null) return cached;
+  }
+  const data = await request(path, options);
+  if (cacheKey) setCached(cacheKey, data, ttl);
+  return data;
+}
+
 export async function request(path, options = {}) {
   const url = _buildUrl(path);
   const opts = { ...(options || {}) };
@@ -90,4 +144,4 @@ export async function request(path, options = {}) {
   return data;
 }
 
-export default { request };
+export default { request, requestWithCache, getCached, setCached, clearCache };
