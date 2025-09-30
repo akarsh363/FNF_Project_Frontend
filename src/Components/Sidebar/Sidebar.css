@@ -1,5 +1,5 @@
 /* =============================
-   Modern Animated Hamburger
+   Modern Animated Hamburger + Drawer
    ============================= */
 
 .hamburger-btn {
@@ -43,7 +43,7 @@
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* ===== Drawer and overlay (unchanged except small polish) ===== */
+/* ===== Drawer and overlay ===== */
 .sidebar-overlay {
   position: fixed;
   inset: 0;
@@ -79,6 +79,52 @@
   gap: 14px;
 }
 
+/* User area */
+.sidebar-user {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.sidebar-user__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  background: #f3f4f6;
+  flex-shrink: 0;
+  border: 1px solid #e6edf3;
+}
+.sidebar-user__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.sidebar-user__name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-user__email {
+  font-size: 13px;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-user__meta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+.sidebar-user__meta .sep { opacity: 0.6; padding: 0 6px; }
+
+/* links */
 .sidebar-drawer a,
 .sidebar-drawer .logout-btn {
   font-size: 16px;
@@ -109,7 +155,7 @@ body.drawer-open .app-content {
 
 @media (max-width: 480px) {
   .hamburger-btn { top: 14px; left: 14px; width: 30px; height: 24px; }
-  .sidebar-drawer { width: 220px; }
+  .sidebar-drawer { width: 220px; padding: 56px 16px 16px; }
   body.drawer-open .app-content { margin-left: 220px; }
 }
 
