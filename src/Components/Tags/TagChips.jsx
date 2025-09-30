@@ -1,18 +1,4 @@
-// export default function TagChips({ tags = [] }) {
-// if (!Array.isArray(tags) || !tags.length) return null;
-// return (
-// <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-// {tags.map((t) => (
-// <span key={t.tagId ?? t.TagId} className="tag-chip">#{t.tagName ?? t.TagName}</span>
-// ))}
-// <style>{`
-// .tag-chip { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #f2f2f2; }
-// `}</style>
-// </div>
-// );
-// }
 
-// src/Components/Tags/TagChips.jsx
 export default function TagChips({ tags = [] }) {
   if (!Array.isArray(tags) || tags.length === 0) return null;
 

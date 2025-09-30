@@ -1,17 +1,9 @@
-// src/Components/Tags/TagsPicker.jsx
+
 import { useEffect, useMemo, useState } from "react";
 import { getMyTags, getTagsByDept } from "../../Services/tagsService";
 
-/**
- * Props:
- * - mode: "mine" | "byDept" (default: "mine")
- * - deptId?: number (required when mode === "byDept")
- * - multiple?: boolean (default: true)
- * - value: number[] | number | null (selected TagId(s))
- * - onChange: (next) => void
- * - placeholder?: string
- * - disabled?: boolean
- */
+
+
 export default function TagsPicker({
   mode = "mine",
   deptId,

@@ -25,7 +25,7 @@
 .post-card__title { line-height: 1.25; }
 .post-card__meta  { font-size: 13px; color: #748094; }
 
-.post-card__body { /* gaps provided inline; this just ensures nice baseline */ }
+/* .post-card__body { gaps provided inline; this just ensures nice baseline }  */
 
 /* Text & Code */
 .post-text {
