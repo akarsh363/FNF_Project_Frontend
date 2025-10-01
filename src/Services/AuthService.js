@@ -1,3 +1,75 @@
+// // src/Services/AuthService.js
+// import api from "./api";
+// const TOKEN_KEY = "token";
+
+// export function saveToken(token) {
+//   try {
+//     localStorage.setItem(TOKEN_KEY, token);
+//   } catch {}
+// }
+// export function getToken() {
+//   try {
+//     return localStorage.getItem(TOKEN_KEY);
+//   } catch {
+//     return null;
+//   }
+// }
+// export function clearToken() {
+//   try {
+//     localStorage.removeItem(TOKEN_KEY);
+//   } catch {}
+// }
+
+// export async function login({ email, password }) {
+//   const body = await api.request("/api/Auth/login", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ email, password }),
+//   });
+//   const token = body?.Token || body?.token || body;
+//   if (!token) throw new Error("No token returned from server");
+//   saveToken(token);
+//   return token;
+// }
+
+// export async function register({
+//   fullName,
+//   email,
+//   password,
+//   departmentId,
+//   profileFile,
+// }) {
+//   const form = new FormData();
+//   form.append("FullName", fullName);
+//   form.append("Email", email);
+//   form.append("Password", password);
+//   form.append("Role", "Employee");
+//   if (
+//     departmentId !== undefined &&
+//     departmentId !== null &&
+//     departmentId !== ""
+//   )
+//     form.append("DepartmentId", String(departmentId));
+//   if (profileFile) form.append("ProfilePicture", profileFile, profileFile.name);
+
+//   // Call the API to register. DO NOT automatically persist token here.
+//   // Return whatever the API returns so caller can decide next steps.
+//   const body = await api.request("/api/Auth/register", {
+//     method: "POST",
+//     body: form,
+//   });
+
+//   // backend may return token or other object - return it, but do NOT call saveToken here.
+//   const token = body?.Token || body?.token || body;
+//   return token;
+// }
+
+// export async function fetchMe() {
+//   return api.request("/api/Auth/me", { method: "GET" });
+// }
+
+// export default { saveToken, getToken, clearToken, login, register, fetchMe };
+
 // src/Services/AuthService.js
 import api from "./api";
 const TOKEN_KEY = "token";
@@ -64,8 +136,24 @@ export async function register({
   return token;
 }
 
+/**
+ * fetchMe - tries to validate current token and return user object.
+ * If token is invalid (401/403), clear token and return null.
+ * If network error or other non-auth error occurs, rethrow so caller can decide.
+ */
 export async function fetchMe() {
-  return api.request("/api/Auth/me", { method: "GET" });
+  try {
+    const user = await api.request("/api/Auth/me", { method: "GET" });
+    return user;
+  } catch (err) {
+    // If unauthorized, clear token and return null (not an exceptional state)
+    if (err && (err.status === 401 || err.status === 403)) {
+      clearToken();
+      return null;
+    }
+    // rethrow other errors (network, 500, etc.) so caller can handle them
+    throw err;
+  }
 }
 
 export default { saveToken, getToken, clearToken, login, register, fetchMe };

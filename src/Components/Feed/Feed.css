@@ -1,4 +1,4 @@
-/* Keep the feed content clear of the sticky navbar */
+Keep the feed content clear of the sticky navbar
 .feed-page {
   scroll-margin-top: 72px;
   padding-top: 8px;

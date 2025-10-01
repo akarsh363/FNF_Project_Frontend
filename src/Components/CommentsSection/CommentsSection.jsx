@@ -71,10 +71,10 @@ function CommentForm({
         rows={2}
       />
       <div className="comment-form-row">
-        <label className="attach-label" title="Attach files">
+        {/* <label className="attach-label" title="Attach files">
           📎
           <input type="file" multiple onChange={handleFile} style={{ display: "none" }} />
-        </label>
+        </label> */}
 
         <div className="file-list">
           {files.map((f, i) => (
